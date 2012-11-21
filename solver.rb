@@ -67,6 +67,10 @@ class SolutionAttempt
 	end
 end
 
+def display_solution_attempt(solution_attempt)
+	# print the solution attempt grid and the puzzle question around its borders
+end
+
 class Square
 	def initialize
 		@mark = :empty
