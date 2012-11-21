@@ -13,6 +13,7 @@ end
 	end
 end
 
+
 class Line
 	initializer(:puzzle, :orientation, :line_number) do
 		
