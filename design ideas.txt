@@ -1,0 +1,10 @@
+Picross puzzle solver design ideas:
+In Ruby, with symbols (and nil?) as markers, arrays as Lines’ runs
+Abstract rows and columns as Lines, with way to reference other axis containing this Lines’s point
+Use recursion to solve all changed (“dirty”) lines (fast because at the end, sees that line solved and exits quickly)
+	Probably cache whether line is solved so faster at end (premature?)
+Use recursion to test all valid placements of blocks/runs, and mark the squares all possibilities have in comon
+For each run, move from earliest to latest possible placements given end Xs, and skip middle Xs after one collision (some sb-recursion runs may have no valid placements)
+In development, use assertions that each line is valid and that dirty marking solves all
+
+have method find_possible_placements_in_range(Array(Integer) the_runs_that_must_fit, length_of_range)
