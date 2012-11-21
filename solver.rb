@@ -72,24 +72,30 @@ def display_solution_attempt(solution_attempt)
 end
 
 class Square
-	def initialize
-		@mark = :empty
+	attr_reader :contents
+	
+	def initialize(contents=:unknown)
+		@contents = contents
 	end
 	
+	# TODO include StringQuerier (whatever it’s called) like Rails does for environment names
+	def unknown?
+		@contents == :unknown
+	end
 	def empty?
-		@mark == :empty
+		@contents == :empty
 	end
-	
 	def filled?
-		! self.empty?
+		@contents == :filled
 	end
 	
 	def to_s
-		if self.empty?
-			"."
-		else
-			"X"
-		end
+		strings = {
+			:unknown => "?",
+			:empty => ".",
+			:filled => "X",
+		}
+		return strings[@contents]
 	end
 end
 
