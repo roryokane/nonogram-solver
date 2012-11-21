@@ -38,6 +38,58 @@ class Puzzle
 	end
 end
 
+class PuzzleBuilder
+	def matrix_of_squares_from_rows_of_strings(string_rows)
+		character_mappings = {
+			"X" => Square.new(:filled), # TODO verify that don’t need to clone Squares in proc; Squares are immutable
+			"." => Square.new(:empty),
+		}
+		return string_rows.map do |string|
+			char_array = string.to_a # TODO verify against String core API
+			char_array.map do |char|
+				character_mappings[char]
+			end
+		end
+	end
+	
+	def puzzle_from_picture(squares_matrix_rows)
+		row_runs = squares_matrix_rows.map do |row_of_squares|
+			find_runs_in_row_or_column(row_of_squares)
+		end
+		
+		squares_matrix_columns = transpose_matrix(squares_matrix_rows)
+		
+		column_runs = squares_matrix_columns.map do |column_of_squares|
+			find_runs_in_row_or_column(column_of_squares)
+		end
+		
+		return Puzzle.new(row_runs, column_runs)
+	end
+	
+	def find_runs_in_row_or_column(row_or_column_of_squares)
+		runs_so_far = []
+		current_run_count = 0 # how many consecutive filled squares seen
+		
+		row_or_column_of_squares.each do |square|
+			if square.filled?
+				current_run_count += 1
+			else
+				if current_run_count > 0
+					runs_so_far.push(current_run_count)
+					current_run_count = 0
+				end
+			end
+		end
+		# TODO fix this duplication
+		if current_run_count > 0
+			runs_so_far.push(current_run_count)
+			current_run_count = 0
+		end
+		
+		return runs_so_far
+	end
+end
+
 # a puzzle’s solution in progress – a grid with squares unknown, filled in or ruled out
 class SolutionAttempt
 	attr_reader :grid
