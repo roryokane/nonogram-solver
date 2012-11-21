@@ -6,5 +6,11 @@ Use recursion to solve all changed (“dirty”) lines (fast because at the end,
 Use recursion to test all valid placements of blocks/runs, and mark the squares all possibilities have in comon
 For each run, move from earliest to latest possible placements given end Xs, and skip middle Xs after one collision (some sb-recursion runs may have no valid placements)
 In development, use assertions that each line is valid and that dirty marking solves all
+Use unit tests, too
+Make a better matrix/table class (as I’ve wanted to do for a while) that lets me view it row-wise or column-wise, and provides the same interface for both after I specify that decision
 
 have method find_possible_placements_in_range(Array(Integer) the_runs_that_must_fit, length_of_range)
+
+What do I do with puzzles with multiple solutions, such as [ [[1],[]] , [[],[1]] ]? Probably resort to brute-force and then show all solutions.
+
+Be able to give hints of what row or column’s runs indicate the next block to fill.
