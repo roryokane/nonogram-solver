@@ -8,6 +8,7 @@ For each run, move from earliest to latest possible placements given end Xs, and
 In development, use assertions that each line is valid and that dirty marking solves all
 Use unit tests, too
 Make a better matrix/table class (as I’ve wanted to do for a while) that lets me view it row-wise or column-wise, and provides the same interface for both after I specify that decision
+Stack space required for the recursive rechecking row and column after filling in a square is O(m*n) where m and n are dimensions of puzzle. Do I have to worry about stack overflow for large puzzles? Can I force tail call optimization or something or would I have to convert the recursion to iteration manually?
 
 have method find_possible_placements_in_range(Array(Integer) the_runs_that_must_fit, length_of_range)
 
