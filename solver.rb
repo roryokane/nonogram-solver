@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class Class
 	def initializer(*args, &b)
 		define_method(:__init_proc) {b}
