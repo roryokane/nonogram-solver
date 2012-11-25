@@ -10,14 +10,23 @@ class TestPuzzleBuilder < MiniTest::Unit::TestCase
 	end
 	
 	def test_square_array_from_string
-		desired = [Square.new(:filled), Square.new(:empty), Square.new(:filled)]
-		result = @builder.square_array_from_string("X.X")
-		assert_equal(desired, result)
+		array_strings_and_expecteds = {
+			"X.X" => [Square.new(:filled), Square.new(:empty), Square.new(:filled)],
+		}
+		array_strings_and_expecteds.each do |array_string, expected|
+			actual = @builder.square_array_from_string(array_string)
+			assert_equal(expected, actual)
+		end
 	end
 	
 	def test_find_runs_in_row_or_column
-		array = @builder.square_array_from_string("XX..X.XXX")
-		result = @builder.find_runs_in_row_or_column(array)
-		assert_equal([2, 1, 3], result)
+		array_strings_and_expecteds = {
+			"XX..X.XXX" => [2, 1, 3],
+		}
+		array_strings_and_expecteds.each do |array_string, expected|
+			array = @builder.square_array_from_string(array_string)
+			actual = @builder.find_runs_in_row_or_column(array)
+			assert_equal(expected, actual)
+		end
 	end
 end
