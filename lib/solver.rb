@@ -41,16 +41,20 @@ class Puzzle
 end
 
 class PuzzleBuilder
-	def matrix_of_squares_from_rows_of_strings(string_rows)
+	def square_array_from_string(string)
 		character_mappings = {
 			"X" => Square.new(:filled), # TODO verify that don’t need to clone Squares in proc; Squares are immutable
 			"." => Square.new(:empty),
 		}
+		char_array = string.to_a # TODO verify against String core API
+		return char_array.map do |char|
+			character_mappings[char]
+		end
+	end
+	
+	def matrix_of_squares_from_rows_of_strings(string_rows)
 		return string_rows.map do |string|
-			char_array = string.to_a # TODO verify against String core API
-			char_array.map do |char|
-				character_mappings[char]
-			end
+			square_array_from_string_array(string)
 		end
 	end
 	
