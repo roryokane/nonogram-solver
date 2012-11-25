@@ -10,7 +10,9 @@ class TestPuzzleBuilder < MiniTest::Unit::TestCase
 	end
 	
 	def test_square_array_from_string
-		assert_equal([Square.new(:filled), Square.new(:empty), Square.new(:filled)], @builder.square_array_from_string["X.X"])
+		desired = [Square.new(:filled), Square.new(:empty), Square.new(:filled)]
+		result = @builder.square_array_from_string("X.X")
+		assert_equal(desired, result)
 	end
 	
 	def test_find_runs_in_row_or_column

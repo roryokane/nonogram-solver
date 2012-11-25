@@ -46,8 +46,8 @@ class PuzzleBuilder
 			"X" => Square.new(:filled), # TODO verify that don’t need to clone Squares in proc; Squares are immutable
 			"." => Square.new(:empty),
 		}
-		char_array = string.to_a # TODO verify against String core API
-		return char_array.map do |char|
+		chars = string.each_char
+		return chars.map do |char|
 			character_mappings[char]
 		end
 	end
@@ -145,6 +145,10 @@ class Square
 	end
 	def filled?
 		@contents == :filled
+	end
+	
+	def ==(other)
+		@contents == other.contents
 	end
 	
 	def to_s
