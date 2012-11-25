@@ -60,23 +60,23 @@ class PuzzleBuilder
 	
 	def puzzle_from_picture(squares_matrix_rows)
 		row_runs = squares_matrix_rows.map do |row_of_squares|
-			find_runs_in_row_or_column(row_of_squares)
+			find_runs_in_array(row_of_squares)
 		end
 		
 		squares_matrix_columns = transpose_matrix(squares_matrix_rows)
 		
 		column_runs = squares_matrix_columns.map do |column_of_squares|
-			find_runs_in_row_or_column(column_of_squares)
+			find_runs_in_array(column_of_squares)
 		end
 		
 		return Puzzle.new(row_runs, column_runs)
 	end
 	
-	def find_runs_in_row_or_column(row_or_column_of_squares)
+	def find_runs_in_array(array_of_squares)
 		runs_so_far = []
 		current_run_count = 0 # how many consecutive filled squares seen
 		
-		row_or_column_of_squares.each do |square|
+		array_of_squares.each do |square|
 			if square.filled?
 				current_run_count += 1
 			else
