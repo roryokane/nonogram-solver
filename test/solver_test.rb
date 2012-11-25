@@ -2,6 +2,8 @@
 
 require_relative 'helper'
 
+require_relative '../lib/solver'
+
 class TestPuzzleBuilder < MiniTest::Unit::TestCase
 	def setup
 		@builder = PuzzleBuilder.new
