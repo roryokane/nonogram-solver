@@ -2,6 +2,8 @@
 
 require 'minitest/unit'
 require 'minitest/autorun'
+require 'minitest/reporters'
+MiniTest::Reporters.use!
 
 
 def assert_all_equal_after_processing(input_expected_map, &process)
