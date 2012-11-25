@@ -136,6 +136,12 @@ class Square
 	def ==(other)
 		@contents == other.contents
 	end
+	def eql?(other)
+		self == other
+	end
+	def hash
+		@contents.hash
+	end
 	
 	def to_s
 		strings = {
