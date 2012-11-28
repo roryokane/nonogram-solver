@@ -2,6 +2,8 @@
 
 require_relative 'ruby-improvements'
 
+require 'active_support/string_inquirer'
+
 class Line
 	initializer(:puzzle, :orientation, :line_number) do
 		
@@ -122,7 +124,8 @@ class Square
 		@contents = contents
 	end
 	
-	# TODO include StringQuerier (whatever it’s called) like Rails does for environment names
+	# TODO use ActiveSupport::StringInquirer here
+	# but is StringInquirer even applicable here? I can’t make Square one, nor @contents. I would have to use it in metaprogramming to define these methods.
 	def unknown?
 		@contents == :unknown
 	end
