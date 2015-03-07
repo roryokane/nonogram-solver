@@ -5,7 +5,7 @@
 * Use recursion to solve all changed (“dirty”) lines (fast because at the end, sees that line solved and exits quickly)
 	* Probably cache whether line is solved so faster at end (premature?)
 * Use recursion to test all valid placements of blocks/runs, and mark the squares all possibilities have in comon
-* For each run, move from earliest to latest possible placements given end Xs, and skip middle Xs after one collision (some sb-recursion runs may have no valid placements)
+* For each run, move from earliest to latest possible placements given end Xs, and skip middle Xs after one collision (some sub-recursion runs may have no valid placements)
 * In development, use assertions that each line is valid and that dirty marking solves all
 * Use unit tests, too
 * Make a better matrix/table class (as I’ve wanted to do for a while) that lets me view it row-wise or column-wise, and provides the same interface for both after I specify that decision
